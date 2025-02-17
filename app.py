@@ -21,6 +21,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Impostare l'app in modalità full screen
+st.set_page_config(layout="wide")
+
 # Funzione per caricare il file PDF
 @st.cache_data
 def get_pdf_download_link(file_path, file_label="Scarica il documento"):
