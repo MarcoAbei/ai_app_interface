@@ -90,10 +90,10 @@ def animated_input(label, key, default_value, delay=0.5):
 # Creazione dei campi di input
 with col1:
     st.subheader("Premesse specifiche")
-    n_protocollo_decreto = st.number_input("NUMERO DI PROTOCOLLO DEL DECRETO DI APPROVAZIONE", step=1)
-    data_protocollo_decreto = st.date_input("DATA DI PROTOCOLLO DEL DECRETO DI APPROVAZIONE")
-    n_visto_acquisto_mef = st.number_input("CODICE DEL VISTO RILASCIATO DAL MEF", step=1)
-    data_visto_acquisto_mef = st.date_input("DATA DEL VISTO RILASCIATO DAL MEF")
+    n_protocollo_decreto = st.number_input("NUMERO DI PROTOCOLLO DEL DECRETO DI APPROVAZIONE", step=1, default_values["NUMERO DI PROTOCOLLO DEL DECRETO DI APPROVAZIONE"])
+    data_protocollo_decreto = st.date_input("DATA DI PROTOCOLLO DEL DECRETO DI APPROVAZIONE", default_values["DATA DI PROTOCOLLO DEL DECRETO DI APPROVAZIONE"])
+    n_visto_acquisto_mef = st.number_input("CODICE DEL VISTO RILASCIATO DAL MEF", step=1, default_values["CODICE DEL VISTO RILASCIATO DAL MEF"])
+    data_visto_acquisto_mef = st.date_input("DATA DEL VISTO RILASCIATO DAL MEF", default_values["DATA DEL VISTO RILASCIATO DAL MEF"])
     modalita_acquisto = st.text_input("MODALITA' DI ACQUISTO")
     n_ordine_acquisto = st.number_input("NUMERO DELL'ORDINE DI ACQUISTO", step=1)
     data_ordine_acquisto = st.date_input("DATA DELL'ORDINE DI ACQUISTO")
