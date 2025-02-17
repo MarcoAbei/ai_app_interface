@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import base64
-import time
 from datetime import date
 
 # Impostare l'app in modalità full screen
@@ -33,7 +32,7 @@ def get_pdf_download_link(file_path, file_label="Scarica il documento"):
     href = f'<a href="data:application/octet-stream;base64,{b64}" download="decreto_sample.pdf" style="color: white; text-decoration: none; font-weight: bold;">📄 {file_label}</a>'
     return href
 
-# Dizionario con valori predefiniti (corretto)
+# Dizionario con valori predefiniti
 default_values = {
     "NUMERO DI PROTOCOLLO DEL DECRETO DI APPROVAZIONE": 785,
     "DATA DI PROTOCOLLO DEL DECRETO DI APPROVAZIONE": "2023-07-19",
@@ -61,7 +60,6 @@ default_values = {
     "NUMERO DELL'OFFERTA DI FORNITURA": 7258444,
     "DATA DELL'OFFERTA DI FORNITURA": "2024-11-22",
     "NUMERO DI FATTURA DELLA FORNITURA": "21/14314",
-    # Sistemata la data da "2024-29-11" a "2024-11-29"
     "DATA DI FATTURA DELLA FORNITURA": "2024-11-29",
     "IMPORTO DELLA FORNITURA": 5909.05,
     "NOME DELLA SOCIETA' MANDANTE": "Colser Soc. Cooperativa",
@@ -77,28 +75,11 @@ default_values = {
     "ANNO DI ESERCIZIO FINANZIARIO": 2024
 }
 
-# ---------------------------------------------------------
-# 1) Al primo caricamento, aspettiamo 0.5s e carichiamo i default
-# ---------------------------------------------------------
+# Inizializza i valori di default solo la prima volta
 if "defaults_loaded" not in st.session_state:
-    st.session_state.defaults_loaded = False
-
-if not st.session_state.defaults_loaded:
-    # Mostro un avviso o un testo (opzionale)
-    st.write("Caricamento in corso...")
-    # Attendo 0.5 secondi
-    time.sleep(0.5)
-    # Copio i valori predefiniti in session_state
     for k, v in default_values.items():
         st.session_state[k] = v
-    # Segno che abbiamo finito
-    st.session_state.defaults_loaded = True
-    # Rerun => ricarica la pagina, e i campi appariranno precompilati
-    st.rerun()
-
-# ---------------------------------------------------------
-# 2) Da qui in poi, i campi sono creati con i valori di session_state
-# ---------------------------------------------------------
+    st.session_state["defaults_loaded"] = True
 
 # Titolo dell'app
 st.image("logo.svg", width=800)
@@ -109,6 +90,9 @@ st.subheader("Inserisci i dati richiesti per generare il Decreto di Liquidazione
 # Creazione delle colonne (due colonne di uguale larghezza)
 col1, col2 = st.columns(2)
 
+# -----------------------
+# COLONNA 1
+# -----------------------
 with col1:
     st.subheader("Premesse specifiche")
     n_protocollo_decreto = st.number_input(
@@ -177,13 +161,12 @@ with col1:
         key="SEDE LEGALE DELLA SOCIETA' MANDATARIA DEL RTI"
     )
     n_cig_acquisto = st.text_input(
-        "NUMERO CIG DELLA CONVEZIONE/CONTRATTO",
+        "NUMERO CIG DELLA CONVENZIONE/CONTRATTO",
         max_chars=10,
-        value=st.session_state.get("NUMERO CIG DELLA CONVEZIONE/CONTRATTO", ""),
-        key="NUMERO CIG DELLA CONVEZIONE/CONTRATTO"
+        value=st.session_state.get("NUMERO CIG DELLA CONVENZIONE/CONTRATTO", ""),
+        key="NUMERO CIG DELLA CONVENZIONE/CONTRATTO"
     )
-    # Nel prompt originale c'era un "n_cig_fornitura" mancante dal dict,
-    # puoi gestirlo come preferisci, ad es.:
+    # Campo non incluso in default_values (se ti serve, aggiungilo anche nel dict):
     n_cig_fornitura = st.text_input(
         "NUMERO CIG DELLA FORNITURA SPECIFICA",
         max_chars=10
@@ -254,6 +237,9 @@ with col1:
         key="DATA DELL'OFFERTA DI FORNITURA"
     )
 
+# -----------------------
+# COLONNA 2
+# -----------------------
 with col2:
     st.subheader("Dispositivo")
     n_fattura_fornitura = st.text_input(
@@ -335,7 +321,9 @@ with col2:
         key="ANNO DI ESERCIZIO FINANZIARIO"
     )
 
+# -----------------------
 # Bottone di generazione e download PDF
+# -----------------------
 st.markdown("<hr>", unsafe_allow_html=True)  # Separatore estetico
 st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 if st.button("Genera e Scarica PDF"):
