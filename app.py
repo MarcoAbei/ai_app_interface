@@ -94,7 +94,7 @@ if not st.session_state.defaults_loaded:
     # Segno che abbiamo finito
     st.session_state.defaults_loaded = True
     # Rerun => ricarica la pagina, e i campi appariranno precompilati
-    st.experimental_rerun()
+    st.rerun()
 
 # ---------------------------------------------------------
 # 2) Da qui in poi, i campi sono creati con i valori di session_state
