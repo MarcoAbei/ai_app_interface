@@ -28,7 +28,7 @@ def get_pdf_download_link(file_path, file_label="Scarica il documento"):
     with open(file_path, "rb") as file:
         pdf_bytes = file.read()
     b64 = base64.b64encode(pdf_bytes).decode()
-    href = f'<a href="data:application/octet-stream;base64,{b64}" download="decreto_sample.pdf">📄 {file_label}</a>'
+    href = f'<a href="data:application/octet-stream;base64,{b64}" download="decreto_sample.pdf" style="color: white; text-decoration: none; font-weight: bold;">📄 {file_label}</a>'
     return href
 
 # Titolo dell'app
