@@ -2,6 +2,17 @@ import streamlit as st
 import pandas as pd
 import base64
 
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #0066cd !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Funzione per caricare il file PDF
 @st.cache_data
 def get_pdf_download_link(file_path, file_label="Scarica il documento"):
@@ -12,8 +23,8 @@ def get_pdf_download_link(file_path, file_label="Scarica il documento"):
     return href
 
 # Titolo dell'app
+st.image("logo.svg", width=800)
 st.title("📄 Generazione e Download del Documento")
-st.image("logo.png", width=200)
 
 st.subheader("Inserisci i dati richiesti")
 
