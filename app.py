@@ -9,7 +9,7 @@ st.markdown(
     <style>
     /* Cambia lo sfondo dell'intera app */
     [data-testid="stAppViewContainer"] {
-        background-color: white; /* Sostituisci con il colore che preferisci */
+        background-color: #0066cd; /* Sostituisci con il colore che preferisci */
     }
 
     /* Cambia lo sfondo della barra laterale */
