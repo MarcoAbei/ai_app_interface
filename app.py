@@ -52,14 +52,7 @@ default_values = {
     "NOME DELLA CONVENZIONE/CONTRATTO": "Convenzione Facility Management 4",
     "SEDE LEGALE DELLA SOCIETA' MANDATARIA DEL RTI": "Roma, Via Giorgio Ribotta n. 31",
     "NUMERO CIG DELLA CONVEZIONE/CONTRATTO": "9773340F4B"
-    "CAUSALE DELLA CONVEZIONE/CONTRATTO": """- manutenzione impianti elettrici
-    - manutenzione impianti elevatori
-    - manutenzione impianti antincendio
-    - manutenzione impianti di sicurezza e controllo accessi
-    - manutenzione reti
-    - servizio di pulizia
-    - servizio di disinfestazione
-    - servizio di raccolta e smaltimento rifiuti speciali"""
+    "CAUSALE DELLA CONVEZIONE/CONTRATTO": "manutenzione impianti elettrici, manutenzione impianti elevatori, manutenzione impianti antincendio, manutenzione impianti di sicurezza e controllo accessi, manutenzione reti, servizio di pulizia, servizio di disinfestazione, servizio di raccolta e smaltimento rifiuti speciali"
     "IMPORTO DELLA CONVEZIONE/CONTRATTO": 7531095.97 
     "SEDE DELL'UFFICIO MLPS ACQUIRENTE": "Roma alla Via Flavia n. 6, Via Fornovo n. 8, Via V. Veneto n. 56, Via San Nicola da Tolentino. n. 5, Via Fornovo n. 8, palazzina C, sede ANPAL, Via Flavia n. 6, 5° piano"
     "IMPEGNO DI SPESA": 7383095.97
