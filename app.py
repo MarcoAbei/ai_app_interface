@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import base64
 
-import streamlit as st
+# Impostare l'app in modalità full screen
+st.set_page_config(layout="wide")
 
 st.markdown(
     """
@@ -20,9 +21,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-# Impostare l'app in modalità full screen
-st.set_page_config(layout="wide")
 
 # Funzione per caricare il file PDF
 @st.cache_data
